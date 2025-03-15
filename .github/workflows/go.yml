@@ -15,6 +15,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Install ALSA library
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libasound2-dev
+
     - name: Set up Go
       uses: actions/setup-go@v4
       with:
