@@ -1,5 +1,0 @@
-steps:
-  - name: Install ALSA library
-    run: |
-      sudo apt update
-      sudo apt install -y libasound2-dev
