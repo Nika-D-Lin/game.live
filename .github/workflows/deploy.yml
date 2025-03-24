@@ -18,6 +18,11 @@ jobs:
         with:
           go-version: 1.19  # 选择 Go 版本
 
+      - name: Install Dependencies
+        run: |
+          go mod tidy
+          go mod download
+
       - name: Build Game Server
         run: |
           go build -o game main.go  # 编译 Go 服务器
