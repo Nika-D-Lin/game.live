@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest  # 运行环境（Linux 服务器）
-    
+   
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3  # 下载代码
@@ -20,8 +20,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          go mod tidy
-          go mod download
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-dev libasound2-dev pkg-config
+
+      - name: Set Environment Variables
+        run: |
+          echo "PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig" >> $GITHUB_ENV
 
       - name: Build Game Server
         run: |
