@@ -27,6 +27,11 @@ jobs:
         run: |
           echo "PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig" >> $GITHUB_ENV
 
+      - name: Download Missing Dependencies
+        run: |
+          go mod tidy
+          go mod download fyne.io/fyne
+          
       - name: Build Game Server
         run: |
           go build -o game main.go  # 编译 Go 服务器
